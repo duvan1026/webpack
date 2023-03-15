@@ -1,4 +1,5 @@
 const Htmlwebpack = require('html-webpack-plugin')
+const MiniCssExtract = require("mini-css-extract-plugin");
 
 module.exports = {
 
@@ -20,8 +21,14 @@ module.exports = {
             },
             {
                 test: /\.css$/,// barre el archivo general y encuentra un -css
+                exclude: /styles.css$/,
                 use: [ 'style-loader', 'css-loader']
             },
+            {
+                test: /styles.css$/,
+                use: [ MiniCssExtract.loader, 'css-loader' ]
+
+            }
         ]
     },
 
@@ -32,7 +39,14 @@ module.exports = {
             tittle: 'Mi Webpack App',
             //filename: 'index.html',//renombra el archivo html
             template: './src/index.html'// archivo el cual se basa el aplicativo
+        }),
+
+        new MiniCssExtract({
+            filename: '[name].css',// usa el mismo nombre
+            ignoreOrder: false // Ignora el orden del archivo
         })
+
+
     ]
 
 }
