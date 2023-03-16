@@ -2,6 +2,9 @@ const Htmlwebpack = require('html-webpack-plugin')
 const MiniCssExtract = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 
+const CssMinimizer = require('css-minimizer-webpack-plugin');
+const Terser       = require('terser-webpack-plugin');
+
 module.exports = {
 
     mode: 'production',
@@ -38,7 +41,13 @@ module.exports = {
         ]
     },
 
-    optimization: {},
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizer(),
+            new Terser(),
+        ]
+    },
 
     plugins: [
         new Htmlwebpack({
