@@ -37,6 +37,16 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/, // evalua cualquier imagen sin importanr en que lugar se encuentra del proyecto.
                 loader: 'file-loader'
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presents: ['@babel/present-env']
+                    }
+                }
             }
         ]
     },
