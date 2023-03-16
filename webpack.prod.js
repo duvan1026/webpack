@@ -8,6 +8,7 @@ module.exports = {
 
     output: {
         clean: true, //Me permite limpiar todo cuando compila
+        filename: 'main.[contenthash].js' // se implementa hash para eliminar cache
     
     },
 
@@ -47,7 +48,7 @@ module.exports = {
         }),
 
         new MiniCssExtract({
-            filename: '[name].css',// usa el mismo nombre
+            filename: '[name].[fullhash].css',// usa el mismo nombre
             ignoreOrder: false // Ignora el orden del archivo
         }),
 
