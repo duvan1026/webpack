@@ -28,6 +28,10 @@ module.exports = {
                 test: /styles.css$/,
                 use: [ MiniCssExtract.loader, 'css-loader' ]
 
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/, // evalua cualquier imagen sin importanr en que lugar se encuentra del proyecto.
+                loader: 'file-loader'
             }
         ]
     },
